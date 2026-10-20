@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ספירה לאחור ל-20.11.2026</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background: #111b21;
+      color: #e9edef;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #25d366;
+    }
+    p.subtitle {
+      color: #8696a0;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 480px;
+      width: 100%;
+    }
+    .card {
+      background: #202c33;
+      border-radius: 12px;
+      padding: 16px 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border: 1px solid #2a3942;
+    }
+    .number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    .label {
+      font-size: 0.85rem;
+      color: #8696a0;
+      margin-top: 6px;
+    }
+    #finished-message {
+      display: none;
+      font-size: 2rem;
+      color: #25d366;
+      font-weight: bold;
+    }
+    @media (max-width: 380px) {
+      .countdown-grid {
+        gap: 8px;
+      }
+      .number {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ספירה לאחור</h1>
+  <p class="subtitle">היעד: 20 בנובמבר 2026 בשעה 09:00</p>
+
+  <div class="countdown-grid" id="timer">
+    <div class="card">
+      <div class="number" id="days">0</div>
+      <div class="label">ימים</div>
+    </div>
+    <div class="card">
+      <div class="number" id="hours">0</div>
+      <div class="label">שעות</div>
+    </div>
+    <div class="card">
+      <div class="number" id="minutes">0</div>
+      <div class="label">דקות</div>
+    </div>
+    <div class="card">
+      <div class="number" id="seconds">0</div>
+      <div class="label">שניות</div>
+    </div>
+  </div>
+
+  <div id="finished-message">הגענו לרגע המיוחל! 🎉</div>
+
+  <script>
+    // יעד: 20 בנובמבר 2026, 09:00 בבוקר
+    const targetDate = new Date("2026-11-20T09:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("timer").style.display = "none";
+        document.getElementById("finished-message").style.display = "block";
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
