@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ספירה לאחור ל-20.11.2026</title>
+  <title>טיול בנים לבוקרשט!</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,8 +12,8 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     body {
-      background: #111b21;
-      color: #e9edef;
+      background: #002B7F; /* כחול רומני */
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -23,14 +23,15 @@
       text-align: center;
     }
     h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 8px;
-      color: #25d366;
+      color: #FCD116; /* צהוב רומני */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
     }
     p.subtitle {
-      color: #8696a0;
+      color: #f0f0f0;
       margin-bottom: 30px;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
     .countdown-grid {
       display: grid;
@@ -38,45 +39,69 @@
       gap: 12px;
       max-width: 480px;
       width: 100%;
+      direction: ltr; /* הופך את הסדר: ימים משמאל, שניות מימין */
     }
     .card {
-      background: #202c33;
+      background: #CE1126; /* אדום רומני */
       border-radius: 12px;
       padding: 16px 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      border: 1px solid #2a3942;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border: 2px solid #FCD116; /* מסגרת צהובה לקוביות */
     }
     .number {
       font-size: 2.2rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #FCD116; /* צהוב רומני */
       line-height: 1.1;
     }
     .label {
-      font-size: 0.85rem;
-      color: #8696a0;
+      font-size: 0.9rem;
+      color: #ffffff;
       margin-top: 6px;
+      font-weight: bold;
+      direction: rtl; /* שומר שהטקסט בעברית לא יתהפך */
     }
     #finished-message {
       display: none;
-      font-size: 2rem;
-      color: #25d366;
+      font-size: 2.2rem;
+      color: #FCD116;
       font-weight: bold;
+      margin-top: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
     @media (max-width: 380px) {
       .countdown-grid {
         gap: 8px;
       }
       .number {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>ספירה לאחור</h1>
-  <p class="subtitle">היעד: 20 בנובמבר 2026 בשעה 09:00</p>
+  <!-- לוגו Gashy Tours המוטמע ישירות כקוד SVG -->
+  <div style="width: 150px; height: 150px; margin-bottom: 20px;">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" style="border-radius: 50%; box-shadow: 0 6px 16px rgba(0,0,0,0.4); border: 4px solid #FCD116; background: #fff;">
+      <!-- פסים של דגל רומניה -->
+      <rect x="0" y="0" width="33.4" height="100" fill="#002B7F" />
+      <rect x="33.4" y="0" width="33.3" height="100" fill="#FCD116" />
+      <rect x="66.7" y="0" width="33.3" height="100" fill="#CE1126" />
+      
+      <!-- עיגול כהה שקוף להבלטת המטוס והטקסט -->
+      <circle cx="50" cy="50" r="42" fill="rgba(0,0,0,0.65)" />
+      
+      <!-- אייקון של מטוס -->
+      <path d="M68,48 L55,39 L55,22 C55,19.5 53,17 50,17 C47,17 45,19.5 45,22 L45,39 L32,48 L32,52 L45,49 L45,64 L40,68 L40,73 L50,70 L60,73 L60,68 L55,64 L55,49 L68,52 Z" fill="#ffffff" />
+      
+      <!-- טקסט הלוגו -->
+      <text x="50" y="87" font-family="Arial, sans-serif" font-weight="bold" font-size="11" fill="#ffffff" text-anchor="middle">Gashy Tours</text>
+    </svg>
+  </div>
+
+  <h1>טיול בנים לבוקרשט! 🇷🇴</h1>
+  <p class="subtitle">המראה: 20 בנובמבר 2026 בשעה 09:00</p>
 
   <div class="countdown-grid" id="timer">
     <div class="card">
@@ -97,10 +122,9 @@
     </div>
   </div>
 
-  <div id="finished-message">הגענו לרגע המיוחל! 🎉</div>
+  <div id="finished-message">יאללה בלאגן! טסים! ✈️🍻</div>
 
   <script>
-    // יעד: 20 בנובמבר 2026, 09:00 בבוקר
     const targetDate = new Date("2026-11-20T09:00:00").getTime();
 
     function updateCountdown() {
